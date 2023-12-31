@@ -9,9 +9,13 @@ function App() {
   const [todo, setTodo] = useState([]);
   const [promptValue, setPromptValue] = useState('');
     
-
+  
   function addTodo(e) {
     e.preventDefault()
+    if (text == "") {
+      alert('Enter Text')
+      return;
+    }
     console.log(text);
     todo.push(text)
     setTodo([...todo]);
@@ -26,7 +30,7 @@ function App() {
   }
   function editTodo(index) {
     const userValue = prompt('Enter something:' , todo[index]);
-
+    
     if (userValue === null) {
       console.log('user click cancle');
       return;
@@ -44,7 +48,7 @@ function App() {
     <>
       <h1>Todo App</h1>
       <form onSubmit={addTodo}>
-        <input type="text" placeholder="enter text" onChange={(e) => setText(e.target.value)} value={text} />&nbsp;&nbsp;
+        <input type="text" placeholder="Enter Text" onChange={(e) => setText(e.target.value)} value={text} />&nbsp;&nbsp;
         <button type="submit">Add</button>
       </form>
       <ul>
